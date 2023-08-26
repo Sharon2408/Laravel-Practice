@@ -38,8 +38,8 @@ Route::get('about',function(){
 });
 
  Route::view('contact','contact');
-//Route::get('Customers/employee',[CustomersController::class,'employee']);
- //Route::get('cgvak','App\Http\Controllers\CustomersController@cgvak');
+Route::get('Customers/employee',[CustomersController::class,'employee']);
+// Route::get('cgvak','App\Http\Controllers\CustomersController@cgvak');
   Route::get('Customers/cgvak',[CustomersController::class,'index']);
  Route::get('Customers/filter',[CustomersController::class,'filterRecords']);
  Route::get('Customers/ass',[CustomersController::class,'assArray']);
@@ -47,3 +47,4 @@ Route::get('about',function(){
  Route::get('Customers/scope',[CustomersController::class,'scope']);
   Route::get('Customers/form',[CustomersController::class,'company']);
  Route::post('Customers',[CustomersController::class,'store']);
+ Route::get('Customers/{employee}',[CustomersController::class,'show']);

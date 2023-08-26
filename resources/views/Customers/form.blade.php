@@ -4,7 +4,7 @@
 Form
 @endsection
 <div class="container">
-    <form action="Customers" method="post">
+    <form action="/Customers" method="post">
         @csrf
         <div class="row">
             <div class="col-5">
@@ -12,7 +12,7 @@ Form
                 <div class="mb-3 mt-3">
                     <label for="name" class="form-label">Employee Name:</label>
                     <input type="text" class="form-control" id="" placeholder="Name" name="name"
-                        autocomplete="off" value="{{ old('name') }}">
+                        autocomplete="off" value="{{ old('name')  }}">
                     <small class="text-danger"> {{ $errors->first('name') }}</small>
                 </div>
                 <div class="mb-3">

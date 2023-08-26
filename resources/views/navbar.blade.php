@@ -37,7 +37,7 @@
             <a class="nav-link mx-2" href="contact">Contact</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-2" href="/Customers/form">Form</a>
+            <a class="nav-link mx-2" href="/Customers/employee">View Employees</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link mx-2 dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">

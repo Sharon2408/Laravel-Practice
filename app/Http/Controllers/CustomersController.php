@@ -44,15 +44,20 @@ class CustomersController extends Controller
         return view('Customers/form', compact('company','emp'));
     }
 
-    // public function employee(){
-    //     $emp = Employee::all();
-    //     return view('Customers/employee', compact('emp'));
-    // }
+    public function employee(){
+        $emp = Employee::all();
+        return view('Customers/employee', compact('emp'));
+    }
     public function scope()
     {
         $id = Employee::id()->get();
         $name = Employee::name()->get();
         return view('Customers/scope', compact('id', 'name'));
+    }
+
+    public function show(Employee $employee){
+
+        return view ('Customers/show',compact('employee'));
     }
     public function store()
     {
@@ -65,7 +70,11 @@ class CustomersController extends Controller
             'active' => 'required',
         ]);
 
-        // $emp8 = new Employee();
+       
+        $emp = Employee::create($data);
+       return redirect('Customers/employee');
+       
+ // $emp8 = new Employee();
         // $emp8->name = request('name');
         // $emp8->department = request('department');
         // $emp8->city = request('city');
@@ -73,8 +82,5 @@ class CustomersController extends Controller
         // $emp8->company_id = request('company_id');
         // $emp8->active = request('active');
         // $emp8->save();
-        $emp = Employee::create($data);
-       
-
     }
 }
