@@ -3,9 +3,9 @@
 @section('title')
 Edit
 @endsection
- <h2> Edit Details of {{$employees->name}} </h2> 
+ <h2> Edit Details of {{$employee->name}} </h2> 
   <div class="py-3">
-    <form action="/Customers/{{$employees->emp_id}}" method="post">
+    <form action="/Customers/{{$employee->emp_id}}" method="post">
     @method('PATCH')
     {{-- @include('Customers/form') --}}
     <div class="mb-3 mt-3  col-sm-6">  

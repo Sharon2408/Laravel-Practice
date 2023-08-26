@@ -47,4 +47,4 @@ Route::get('Customers/employee',[CustomersController::class,'employee']);
  Route::get('Customers/scope',[CustomersController::class,'scope']);
   Route::get('Customers/form',[CustomersController::class,'company']);
  Route::post('Customers',[CustomersController::class,'store']);
- Route::get('Customers/{employee}',[CustomersController::class,'show']);
+ Route::get('Customers/{employee}/edit',[CustomersController::class,'show']);

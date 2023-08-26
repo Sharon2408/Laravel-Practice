@@ -50,14 +50,15 @@ class CustomersController extends Controller
     }
     public function scope()
     {
-        $id = Employee::id()->get();
+        $id = Employee::empid()->get();
         $name = Employee::name()->get();
         return view('Customers/scope', compact('id', 'name'));
     }
 
     public function show(Employee $employee){
-
-        return view ('Customers/show',compact('employee'));
+        $employees = Employee::all();
+        $company = Company::all();
+        return view ('Customers/edit',compact('employee','employees','company'));
     }
     public function store()
     {
