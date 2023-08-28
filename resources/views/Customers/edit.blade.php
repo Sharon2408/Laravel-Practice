@@ -1,19 +1,25 @@
 @extends('navbar')
 @section('content')
 @section('title')
-Edit
+    Edit
 @endsection
- <h2> Edit Details of {{$employee->name}} </h2> 
-  <div class="py-3">
-    <form action="/Customers/{{$employee->emp_id}}" method="post">
-    @method('PATCH')
-    {{-- @include('Customers/form') --}}
-    <div class="mb-3 mt-3  col-sm-6">  
-       <button type="submit" class="btn btn-primary">Update Customer</button>
-     </div>  
-@csrf
-</form> 
+<div class="container">
+    <div class="row justify-content-center">
+        <h4 class="text-center"> Update Details of {{ $employee->name }} </h4>
+        <div class="col-5 border border-dark rounded-3 shadow-lg">
+            <form action="/Customers/{{ $employee->id }}" method="post">
+                @method('PATCH')
+                @include('Customers/form')
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Update Customer</button>
+                    <br><br>
+                </div>
+                @csrf
+            </form>
+        </div>
+    </div>
 </div>
-
-
+<br>
+<br>
+<br>
 @endsection

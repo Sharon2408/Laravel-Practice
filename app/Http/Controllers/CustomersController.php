@@ -40,8 +40,8 @@ class CustomersController extends Controller
     public function company()
     {
         $company = Company::all();
-        $emp = Employee::all();
-        return view('Customers/form', compact('company','emp'));
+        $employee = new Employee();
+        return view('Customers/create', compact('company','employee'));
     }
 
     public function employee(){
@@ -55,13 +55,14 @@ class CustomersController extends Controller
         return view('Customers/scope', compact('id', 'name'));
     }
 
-    public function show(Employee $employee){
+    public function show(Employee $employee,Company $company){
         $employees = Employee::all();
-        $company = Company::all();
-        return view ('Customers/edit',compact('employee','employees','company'));
+        $companies = Company::all();
+        return view ('Customers/edit',compact('employee','company','employees','companies'));
     }
     public function store()
     {
+        
         $data = request()->validate([
             'name' => 'required | min:3',
             'department' => 'required',
@@ -70,10 +71,10 @@ class CustomersController extends Controller
             'company_id' => 'required',
             'active' => 'required',
         ]);
-
        
-        $emp = Employee::create($data);
-       return redirect('Customers/employee');
+        Employee::create($data);
+        return redirect('Customers/employee');
+    
        
  // $emp8 = new Employee();
         // $emp8->name = request('name');
@@ -84,4 +85,25 @@ class CustomersController extends Controller
         // $emp8->active = request('active');
         // $emp8->save();
     }
+
+    public function update(Employee $employee){
+        
+        $employee->update($this->validateRequest());
+        return redirect('Customers/employee');
+       }
+       public function destroy(Employee $employee){
+        $employee -> delete();
+        return redirect('Customers/employee');
+       }
+public function validateRequest(){
+   return $data = request()->validate([
+        'name' => 'required | min:3',
+        'department' => 'required',
+        'city' => 'required',
+        'contact_no' => 'required',
+        'company_id' => 'required',
+        'active' => 'required',
+    ]);
 }
+
+    }

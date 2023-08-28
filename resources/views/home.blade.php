@@ -32,8 +32,8 @@
 
     <div class="container-fluid  text-center" id="image">
         <div class="row">
-            <div class="col">
-                <h1>LARAVEL</h1>
+            <div class="col" height="500px">
+                <h1 style="font-family:Pacifico;font-size: 32px;">Laravel</h1>
             </div>
         </div>
     </div>

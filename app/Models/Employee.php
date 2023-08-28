@@ -32,8 +32,12 @@ class Employee extends Model
         //     2 => 'G2-Tech',
         //     3 => 'Accenture'
         // ][$attribute];
-        return $this->getCompany()[$attribute];
-
+       // return $this->getCompany()[$attribute];
+       if (isset($this->getCompanyid()[$attribute])) {
+        return $this->getCompanyid()[$attribute];
+    } else {
+        return;
+    }
     }
 
 
@@ -46,7 +50,12 @@ class Employee extends Model
         //     0 => 'Not Working',
         //     1 => 'Working',
         // ][$attribute];
+       // return $this->getActive()[$attribute];
+       if (isset($this->getActive()[$attribute])) {
         return $this->getActive()[$attribute];
+    } else {
+        return;
+    }
     }
 
 
@@ -55,7 +64,7 @@ class Employee extends Model
 
 
 
-    public function getCompany()
+    public function getCompanyid()
     {
         return [
             1 => 'CG-VAK',

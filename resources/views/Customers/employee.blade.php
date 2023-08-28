@@ -1,13 +1,13 @@
 @extends('navbar')
 @section('content')
 @section('title')
-CRUD
+    CRUD
 @endsection
 <h1></h1>
 <div class="container">
     <div class="row">
         <div class="col">
-        <a class="btn btn-primary" href="/Customers/form">Create</a>
+            <a class="btn btn-primary" href="/Customers/create">Add Employee</a>
             <table class="table table-striped table-hover">
                 <thead class="text-center">
                     <tr>
@@ -23,16 +23,23 @@ CRUD
                 <tbody>
                     @foreach ($emp as $emp)
                         <tr>
-                            <td>{{ $emp->emp_id }}</td>
-                            <td>{{$emp->name}}</td>
-                            <td>{{$emp->department}}</td>
-                            <td>{{$emp->city}}</td>
-                            <td>{{$emp->company_id}}</td>
-                            <td>{{$emp->active}}</td>
-                            <td class="text-center"><a class="btn btn-info" href="/Customers/{{$emp->emp_id}}/edit">Edit</a></td>
-                            <td class="text-center"><a class="btn btn-danger" href="" >Delete</a></td>
-                    </tr>
-                     @endforeach
+                            <td>{{ $emp->id }}</td>
+                            <td>{{ $emp->name }}</td>
+                            <td>{{ $emp->department }}</td>
+                            <td>{{ $emp->city }}</td>
+                            <td>{{ $emp->company_id }}</td>
+                            <td>{{ $emp->active }}</td>
+                            <td class="text-center"><a class="btn btn-info"
+                                    href="/Customers/{{ $emp->id }}/edit">Edit</a></td>
+                            <td class="text-center">
+                                <form action="/Customers/{{ $emp->id }}" method="post">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button class="btn btn-danger" type="submit">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
