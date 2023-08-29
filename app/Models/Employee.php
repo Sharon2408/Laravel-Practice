@@ -18,7 +18,7 @@ class Employee extends Model
     protected $guarded = [];
     public function scopeEmpid($query)
     {
-        return $query->where('emp_id', 1);
+        return $query->where('id', 1);
     }
     public function scopeName($query)
     {
