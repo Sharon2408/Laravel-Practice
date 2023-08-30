@@ -30,6 +30,7 @@
             <div class="mb-3">
                 <label class="form-label" for="company_id">Select Company</label>
                 <select class="form-control" name="company_id" id="">
+                 <option value="" class="dropdown-item disabled" >--Select</option>
                     @foreach ($employee->getCompanyid() as $companykey => $companyvalue)
                         <option value="{{$companykey}}" {{$employee->company_id == $companyvalue ? 'selected' : ''}} >{{ $companyvalue }}</option>
                     @endforeach
@@ -39,6 +40,7 @@
                 <div class="mb-3">
                     <label for="active" class="form-label">Working Status</label>
                     <select name="active" class="form-control" id="">
+                    <option value="" class="dropdown-item disabled" >--Select</option>
                        @foreach($employee->getActive() as $activekey => $activevalue)
                         <option value="{{$activekey}}" {{$employee->active == $activevalue ? 'selected' : ''}}>{{$activevalue}}</option>
                        @endforeach
