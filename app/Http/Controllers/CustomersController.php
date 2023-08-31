@@ -92,23 +92,21 @@ class CustomersController extends Controller
     }
 
     public function update(Employee $employee){
-        
-        $employee->update($this->validateRequest());
+        $data = request()->validate([
+            'name' => 'required | min:3',
+            'department' => 'required',
+            'city' => 'required',
+            'contact_no' => 'required',
+            'company_id' => 'required',
+            'active' => 'required',
+        ]);
+        $employee->update($data);
         return redirect('Customers/employee');
        }
        public function destroy(Employee $employee){
         $employee -> delete();
         return redirect('Customers/employee');
        }
-public function validateRequest(){
-   return $data = request()->validate([
-        'name' => 'required | min:3',
-        'department' => 'required',
-        'city' => 'required',
-        'contact_no' => 'required',
-        'company_id' => 'required',
-        'active' => 'required',
-    ]);
-}
+
 
     }
