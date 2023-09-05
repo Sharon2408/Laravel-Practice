@@ -3,6 +3,7 @@
 use App\Models\Employee;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomersController;
+use App\Http\Controllers\ContactFormController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +51,10 @@ Route::post('Customers', [CustomersController::class, 'store']);
 Route::get('Customers/{employee}/edit', [CustomersController::class, 'show']);
 Route::patch('Customers/{employee}', [CustomersController::class, 'update']);
 Route::delete('/Customers/{employee}', [CustomersController::class, 'destroy']);
+
+
+Route::get('/Customers/contactform', [ContactFormController::class, 'create']);
+Route::post('/Contact', [ContactFormController::class, 'store']);
 Auth::routes([
     'verify' => true
 ]);

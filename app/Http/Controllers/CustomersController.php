@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewUserEvent;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Customers;
 use App\Models\Employee;
 use App\Models\Company;
+use App\Mail\WelcomeUserMail;
+use Illuminate\Support\Facades\Mail;
 
 class CustomersController extends Controller
 {
@@ -76,9 +79,11 @@ class CustomersController extends Controller
             'company_id' => 'required',
             'active' => 'required',
         ]);
-       
-        Employee::create($data);
-        return redirect('Customers/employee');
+        
+       $customer = Employee::create($data);
+      //  Mail::to($customer->email)->send(new WelcomeUserMail());
+        event(new NewUserEvent($customer));
+        return redirect('Customers/employee')->with('action-feedback', 'New User Created Successfully');
     
        
  // $emp8 = new Employee();
@@ -101,11 +106,11 @@ class CustomersController extends Controller
             'active' => 'required',
         ]);
         $employee->update($data);
-        return redirect('Customers/employee');
+        return redirect('Customers/employee')->with('edit-feedback', 'Details Updated Successfully');
        }
        public function destroy(Employee $employee){
         $employee -> delete();
-        return redirect('Customers/employee');
+        return redirect('Customers/employee')->with('delete-feedback', 'User Deleted Successfully');
        }
 
 
